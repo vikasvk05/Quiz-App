@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#mainArea{
+		height: 300px;
+		width: 300px;
+		margin-left: 800px;
+		/*margin-top: 200px;*/
+		background-color: green;
+		padding: 30px;
+	}	
+	</style>
+
+	<script type="text/javascript">
+		function getdData(str) {
+			if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+        	if (this.readyState == 4 && this.status == 200) {
+        		document.getElementById("mainArea").innerHTML = this.responseText;
+        	}
+        };
+        xmlhttp.open("GET","getdata.php?q="+str,true);
+        xmlhttp.send();
+    }
+</script>
+</head>
+<body>
+	<div>
+		<button name="b1" value="1" onclick="getdData(this.value)">1</button>
+		<button name="b2" value="2" onclick="getdData(this.value)">2</button>
+	</div>
+	<div>
+		<h2>Array fatch</h2>
+		<!-- <button name="user" value=""></button> -->
+		<button name="user" value="1" onclick="getdData(this.value++)">Next</button>
+		<div id="mainArea">
+			 <!-- <input type="radio" name="gender" id="male" value="male"> -->
+		</div>
+	</div>
+</body>
+</html>

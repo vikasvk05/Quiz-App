@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cricket Quiz</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+
+
+  <style type="text/css">
+    #butArea{
+      margin-top: 70px;
+      margin-left: 90px;
+      font-size: 20px;
+      width: 300px;
+      border: 1px;
+      float: left;
+    }
+    td,tr{
+       height: 50px;
+       width: 50px;
+        text-align: center;
+    }
+    #ProgressBar{
+      letter-spacing: 1.5px;
+    }
+    #mainArea{
+    height: 300px;
+    width: 400px;
+    margin-left: 800px;
+    margin-top: 50px;
+    padding: 0px;
+  </style>
+
+  <!-- Ajax use -->
+  <script type="text/javascript">
+    function getdData(str) {
+      if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("mainArea").innerHTML = this.responseText;
+          }
+        };
+        xmlhttp.open("GET","getdata.php?q="+str,true);
+        xmlhttp.send();
+    }
+</script>
+
+</head>
+<body>
+
+  <div class="bg-primary text-white text-center navbar-expand-lg " style="height:70px">
+    <p class="mh-100" style="font-size: 40px; letter-spacing: 2px;"><b>Cricket Quiz</b></p>
+  </div>
+  <div class="bg-dark" style="height: 5px;"></div>
+   <i class="fas fa-cricket"></i>
+
+  
+  <div id="butArea">     
+    <table border="1px;">
+       <p id="ProgressBar">Your Progress</p>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+      </tr>
+    </table>
+    <!-- <div id="mainArea">  </div> -->
+  </div>
+
+  <div >
+    <div id="mainArea">  </div>
+    <button name="user" value="1" onclick="getdData(this.value++)">Next</button>
+  </div>
+   <div>
+    <button name="b1" value="1" onclick="getdData(this.value)">1</button>
+    <button name="b2" value="2" onclick="getdData(this.value)">2</button>
+  </div>
+</body>
+</html>
